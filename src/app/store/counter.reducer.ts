@@ -10,6 +10,7 @@ const initState = {
 export interface Counter {
     number: number;
 }
+
 export function counterReducer(state: Counter = initState, action: CustomAction) {
 
     switch (action.type) {

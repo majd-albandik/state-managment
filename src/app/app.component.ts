@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { StoreInterface, } from './store/store';
 import { IncrementAction, DecrementAction } from './store/actions/counter.actions';
 import { numberSelector } from './store/counter.reducer';
+import { LoadTodos } from './store/actions/todos.actions';
 
 @Component({
     selector: 'app-root',
@@ -17,6 +18,10 @@ export class AppComponent {
         this.store.select(numberSelector).subscribe((date) => {
             this.count = date;
         });
+
+        this.store.subscribe((state) => {
+            console.log(state);
+        });
     }
 
     increase() {
@@ -29,5 +34,9 @@ export class AppComponent {
         this.store.dispatch(
             new DecrementAction(1)
         );
+    }
+
+    callAPI() {
+        this.store.dispatch(new LoadTodos());
     }
 }
