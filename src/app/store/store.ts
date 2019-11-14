@@ -1,4 +1,5 @@
 import { Counter, counterReducer } from './counter.reducer';
+import { ActionReducerMap } from '@ngrx/store';
 
 
 // the general state of the app  (for every reducer )
@@ -15,7 +16,7 @@ export interface CustomAction {
 
 
 // All reducers in the app
-export const reducers = {
+export const reducers: ActionReducerMap<StoreInterface> = {
     counter: counterReducer,
 };
 

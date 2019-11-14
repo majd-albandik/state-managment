@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StoreInterface, } from './store/store';
 import { IncrementAction, DecrementAction } from './store/actions/counter.actions';
+import { numberSelector } from './store/counter.reducer';
 
 @Component({
     selector: 'app-root',
@@ -13,8 +14,8 @@ export class AppComponent {
 
     constructor(private store: Store<StoreInterface>) {
 
-        this.store.subscribe((date: StoreInterface) => {
-            this.count = date.counter.number;
+        this.store.select(numberSelector).subscribe((date) => {
+            this.count = date;
         });
     }
 
